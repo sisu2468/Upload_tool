@@ -1,0 +1,7 @@
+.venv
+automatic_matter
+build
+dist
+*.rar
+*.spec
+downloaded_images
