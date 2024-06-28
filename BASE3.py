@@ -46,10 +46,11 @@ class Scraping:
             password_field.send_keys(self.password)
             # Click login button
             login_button.click()
+            time.sleep(2)
             
             # Wait for and select the label associated with the radio button by its 'for' attribute
             radio_label = WebDriverWait(self.driver, 10).until(
-                EC.element_to_be_clickable((By.CSS_SELECTOR, "label[for='shop-33beeccc-0449-4434-b7b5-0e17dc406c70']"))
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "label[for='shop-d1e497de-329e-4b05-bad3-475cb8e255f3']"))
             )
             radio_label.click()
             

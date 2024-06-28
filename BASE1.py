@@ -1,4 +1,4 @@
-# pyinstaller -F --paths=C:\Users\Administrator\Documents\WORK\scrape\.venv\Lib\site-packages BASE1.py --onefile --hide-console hide-early
+# pyinstaller -F --paths=C:\Users\Administrator\Documents\WORK\scrape\.venv\Lib\site-packages BASE2.py --onefile --hide-console hide-early
 import os
 import logging
 from selenium import webdriver
@@ -47,6 +47,16 @@ class Scraping:
             password_field.send_keys(self.password)
             # Click login button
             login_button.click()
+            time.sleep(2)
+            
+            # Wait for and select the label associated with the radio button by its 'for' attribute
+            radio_label = WebDriverWait(self.driver, 10).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, "label[for='shop-caca8e3d-3694-455e-a37c-7fc1b9e1351b']"))
+            )
+            radio_label.click()
+            
+            logging.info("radio button")
+            time.sleep(2)
             
             type_button = WebDriverWait(self.driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "button.c-submitBtn.c-submitBtn--full"))
@@ -98,17 +108,17 @@ root.title("在庫アップロードツール")
 
 tk.Label(root, text="電子メール:").grid(row=0, column=0)
 email_entry = tk.Entry(root)
-email_entry.grid(row=0, column=1)
+email_entry.grid(row=0, column=1, padx=8, pady=8)
 
 tk.Label(root, text="パスワード:").grid(row=1, column=0)
 password_entry = tk.Entry(root, show="*")
-password_entry.grid(row=1, column=1)
+password_entry.grid(row=1, column=1, padx=8, pady=8)
 
 tk.Label(root, text="CSVファイルパス:").grid(row=2, column=0)
 file_path_entry = tk.Entry(root)
-file_path_entry.grid(row=2, column=1)
-tk.Button(root, text="ブラウズ", command=browse_file).grid(row=2, column=2)
+file_path_entry.grid(row=2, column=1, padx=8, pady=8)
+tk.Button(root, text="ブラウズ", command=browse_file).grid(row=2, column=2, padx=8, pady=8)
 
-tk.Button(root, text="在庫アップロード", command=start_scraping).grid(row=3, columnspan=3)
+tk.Button(root, text="在庫アップロード", command=start_scraping).grid(row=3, columnspan=3, padx=8, pady=8)
 
 root.mainloop()
